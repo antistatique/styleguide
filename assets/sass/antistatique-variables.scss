@@ -16,7 +16,7 @@ category: Layout - Colors
 
     <div class="col-sm-3 col-xs-6">
       <div style="background:#73063a;"><br><br><br><br><br></div>
-      <pre class="text-center">$tyrian-purple</pre>
+      <pre class="text-center">$tyrianPurple</pre>
     </div>
 
     <div class="col-sm-3 col-xs-6">
@@ -26,12 +26,12 @@ category: Layout - Colors
 
     <div class="col-sm-3 col-xs-6">
       <div style="background:#fbb0d4;"><br><br><br><br><br></div>
-      <pre class="text-center">$lavender-pink</pre>
+      <pre class="text-center">$lavenderPink</pre>
     </div>
 
     <div class="col-sm-3 col-xs-6">
       <div style="background:#eed2da;"><br><br><br><br><br></div>
-      <pre class="text-center">$pale-rose</pre>
+      <pre class="text-center">$paleRose</pre>
     </div>
   </div>
   <br>
@@ -68,10 +68,10 @@ category: Layout - Colors
 */
 
 
-$tyrian-purple:                     #73063a;
+$tyrianPurple:                     #73063a;
 $magenta:                           #d40b6b;
-$lavender-pink:                     #fbb0d4;
-$pale-rose:                         #eed2da;
+$lavenderPink:                     #fbb0d4;
+$paleRose:                         #eed2da;
 
 $black:                             #000;
 $mine:                              #333;
@@ -81,3 +81,12 @@ $white:                             #fff;
 
 
 
+
+
+//=============================================================================
+// FONTS
+//=============================================================================
+
+$fontSans:        "Helvetica Neue", Helvetica, Arial, sans-serif;
+$fontSerif:       "Corporate", Georgia, serif;
+$fontMono:        Monaco, Menlo, Consolas, monospace;
