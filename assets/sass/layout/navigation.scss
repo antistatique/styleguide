@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+/*doc
+---
+title: Base navigation
+name: a-nav
+category: Layout - Navigation
+---
+
+```html_example
+<nav>
+  <ul>
+    <li class="active"><a href="/fr/">Accueil</a></li>
+    <li><a href="#">Portfolio</a></li>
+    <li><a href="#">L'Agence</a></li>
+    <li><a href="#">Job</a></li>
+    <li><a href="#">Blog</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</nav>
+```
+*/
+
+nav {
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+  li {
+    display: inline-block;
+    margin: 0 10px;
+  }
+  a {color: $mine;}
+  a:hover, .active a {
+    color: $tyrianPurple;
+  }
+}

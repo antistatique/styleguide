@@ -16,6 +16,18 @@ category: Layout - Themes
 
 .theme-magenta {
   background: $magenta;
+  color: $white;
+  h1, h1 a {color: $paleRose;}
+  a {
+    color: $white;
+    &:hover {color: $white;}
+  }
+  nav a {
+    color: $lavenderPink;
+    text-decoration: none;
+  }
+  nav .active a, nav a:hover {color: $white;}
+  hr {background: $white;}
 }
 
 
