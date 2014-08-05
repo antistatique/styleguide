@@ -23,6 +23,22 @@ category: Layout - Buttons
 | <button type="button" class="btn btn-link">Link</button>       | <pre>btn btn-link</pre>    |
 */
 
+.btn {
+  border-radius: 0px;
+  font-weight: bold;
+  transition: background 0.3s;
+  box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+}
+
+.btn-primary {
+  background: $magenta;
+  border: 1px solid darken($magenta, 5%);
+  &:hover {
+    background: $tyrianPurple;
+    border: 1px solid darken($tyrianPurple, 5%);
+  }
+}
 
 /*doc
 ---
