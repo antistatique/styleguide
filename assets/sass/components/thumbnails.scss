@@ -56,3 +56,55 @@ category: Components - Thumbnails
 </div>
 ```
 */
+
+
+/*doc
+---
+title: Project thumbnail
+name: c-project-thumbnail
+category: Components - Thumbnails
+---
+
+```html_example
+<a class="project-thumb" href="#">
+  <img src="http://lorempixel.com/360/360/cats" alt="Some cats image">
+  <div class="caption">
+    <h3>Awesome project !</h3>
+    <h5>Build with Frogcms</h5>
+  </div>
+</a>
+```
+*/
+
+.project-thumb {
+  display: inline-block;
+  position: relative;
+  img {
+    transition: all 0.3s;
+    filter: grayscale(1);
+  }
+  &:hover img {
+    filter: grayscale(0);
+  }
+  .caption {
+    position: absolute;
+    bottom: 25px;
+    width: 80%;
+    left: 10%;
+    background: $white;
+    padding: 25px;
+  }
+  h3, h5 {
+    margin: 0;
+    color: $mine;
+    display: inline-block;
+    transition: color 0.3s;
+  }
+  h3 {
+    border-bottom: 1px solid $magenta;
+    padding-bottom: 5px;
+    margin-bottom: 8px;
+  }
+  &:hover h3 {color: $magenta;}
+  &:hover h5 {text-decoration: underline;}
+}
