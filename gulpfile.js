@@ -111,3 +111,12 @@ gulp.task('serve', function () {
   gulp.watch('assets/sass/**/*.scss', ['styles', 'styleguide']);
   gulp.watch('assets/js/*.js', ['scripts', 'styleguide']);
 });
+
+
+/**
+ * Deploy to gh-pages task
+ */
+gulp.task('deploy', function () {
+  gulp.src("./styleguide/**/*")
+    .pipe($.ghPages());
+});
