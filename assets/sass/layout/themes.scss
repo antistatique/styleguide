@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+/*doc
+---
+title: Magenta
+name: a-magenta
+category: Layout - Themes
+---
+
+```html_example
+<div class="theme-magenta">
+  <br><br><br><br>
+</div>
+```
+*/
+
+.theme-magenta {
+  background: $magenta;
+}
+
+
+/*doc
+---
+title: Dust
+name: b-dust
+category: Layout - Themes
+---
+
+```html_example
+<div class="theme-dust">
+  <br><br><br><br>
+</div>
+```
+*/
+
+.theme-dust {
+  background: $dust;
+}

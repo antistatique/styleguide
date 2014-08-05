@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+/*doc
+---
+title: Base separator
+name: a-base-separator
+category: Layout - Separators
+---
+
+```html_example
+<hr>
+```
+*/
+
+hr {
+  border: none;
+  width: 50px;
+  height: 1px;
+  background-color: $mine;
+  margin: 12px 0;
+}
+
+
+/*doc
+---
+title: Large separator
+name: b-large-separator
+category: Layout - Separators
+---
+
+```html_example
+<hr class="separator-lg">
+```
+*/
+
+.separator-lg {
+  width: 100px;
+}
+
+
+/*doc
+---
+title: Full separator
+name: c-full-separator
+category: Layout - Separators
+---
+
+```html_example
+<hr class="separator-full">
+```
+*/
+
+.separator-full {
+  width: 100%;
+  background: $silver;
+}

@@ -228,6 +228,12 @@ category: Layout - Icons
 
 ---
 
+```html_example
+<a href="#" class="icon-link">
+  <i class="fa fa-twitter"></i> Twitter
+</a>
+```
+
 ## 71 New Icons in 4.1
 
 |  Icon                                      |  Class                                  |
@@ -932,3 +938,7 @@ category: Layout - Icons
 | <i class="fa fa-wheelchair"></i>           |   <pre>fa fa-wheelchair</pre>           |
 
 */
+
+.icon-link {
+  text-decoration: none;
+}
