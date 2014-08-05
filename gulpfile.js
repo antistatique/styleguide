@@ -97,16 +97,17 @@ gulp.task('styleguide', $.shell.task([
   'hologram'
 ]));
 
-/**
- * Default task
- */
-gulp.task('default', ['vendors', 'styles', 'scripts', 'watch', 'styleguide']);
 
-/**
- * Watch task
- */
-gulp.task('watch', function() {
+gulp.task('default', ['vendors', 'styles', 'scripts']);
+
+gulp.task('serve', function () {
+  browserSync.init(['styleguide/*.html'], {
+    server: {
+      baseDir: ['./']
+    },
+    notify: false
+  });
+
   gulp.watch('assets/sass/**/*.scss', ['styles', 'styleguide']);
   gulp.watch('assets/js/*.js', ['scripts', 'styleguide']);
 });
-
