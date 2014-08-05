@@ -10,6 +10,7 @@ category: Layout - Icons
 Just use the `glyphicon` class followed by the specific icon class.
 
 ```html_example
+<i class="fa fa-bomb"></i>yo<br>
 <a href="#">
   <span class="glyphicon glyphicon-map-marker"></span> Check on the map
 </a>

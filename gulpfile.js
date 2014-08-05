@@ -17,7 +17,7 @@ gulp.task('vendors', function() {
    * CSS VENDORS
    */
   gulp.src([
-        ''
+        'bower_components/font-awesome/css/font-awesome.css'
       ])
       .pipe($.concat('vendors.css'))
       .pipe($.minifyCss())
@@ -54,6 +54,7 @@ gulp.task('vendors', function() {
    */
   gulp.src([
       'bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/*',
+      'bower_components/font-awesome/fonts/*',
       'assets/fonts/*'
     ])
     .pipe(gulp.dest('build/fonts'));
