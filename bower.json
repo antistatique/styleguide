@@ -1,11 +1,17 @@
 {
-  "name": "styleguide",
+  "name": "Cortana",
+  "version": "1.2.2",
+  "ignore": [
+    "**/.*",
+    "gulpfile.js",
+    "assets",
+    "package.json"
+  ],
   "devDependencies": {
-    "jquery": "1.10.2",
-    "Cortana": "~1.2.2",
-    "bootstrap-sass-official": "~3.1.1",
-    "FlexSlider": "master",
-    "angular": "~1.2.20",
-    "font-awesome": "~4.1.0"
+    "jquery": "1.10.*",
+    "Slidebars": "~0.9.4",
+    "angular": "1.2.*",
+    "angular-strap": "2.0.*",
+    "angular-bootstrap": "0.11.*"
   }
 }

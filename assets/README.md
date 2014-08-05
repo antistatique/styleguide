@@ -1,1 +1,0 @@
-# Antistatique Styleguide
