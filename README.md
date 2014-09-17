@@ -33,9 +33,6 @@ $ gulp deploy
 ```
 
 
-## Usage
-
-Just clone it inside your project and link the build files to your template.
 
 
 
