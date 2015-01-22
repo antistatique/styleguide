@@ -8,15 +8,24 @@ category: Layout - Typography
 ---
 
 ```html_example
-<h1>My title level 1</h1>
-<h2>My title level 2</h2>
-<h3>My title level 3</h3>
-<h4>My title level 4</h4>
-<h5>My title level 5</h5>
-<h6>My title level 6</h6>
+<h1>H1. Dagny Extra Light</h1>
+<h2>H2. Dagny Bold</h2>
+<h3>H3. Dagny Extra Light</h3>
+<h4>H4. Dagny Bold</h4>
+<h5>H5. Dagny Extra Light</h5>
+<h6>H6. Dagny Bold</h6>
 ```
 */
 
+* {
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h3,
+h5 {
+  font-weight: 200;
+}
 
 
 /*doc
@@ -166,6 +175,13 @@ category: Layout - Typography
  </p>
 ```
 */
+
+a {
+  border-bottom-width: 1px;
+  border-bottom-style: solid; // by not setting the color, it will be the color of the link by default!
+  line-height: 1.1em;
+  display: inline-block;
+}
 
 /*doc
 ---

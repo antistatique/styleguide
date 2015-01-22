@@ -22,6 +22,11 @@ css_include:
 # - 'css/vendors.css'
   - 'css/main.css'
 
+# List all custom tags you want to appear in the <head> section of the
+head_tags:
+  - '<script src="//use.typekit.net/lfl3jyz.js"></script>'
+  - '<script>try{Typekit.load();}catch(e){}</script>'
+
 # List all js to include for the styleguide render examples (path from styleguide directory)
 js_include:
   - 'js/vendors.min.js'
