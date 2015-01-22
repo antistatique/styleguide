@@ -89,17 +89,17 @@ gulp.task('img', function() {
  * With error reporting on compiling (so that there's no crash)
  */
 gulp.task('styles', function() {
-  if (argv.production) { console.log('[styles] Processing styles for production env.' ); }
+  if (!argv.dev) { console.log('[styles] Processing minified styles.' ); }
   else { console.log('[styles] Processing styles for dev env. No minifying here, for sourcemaps!') }
 
   return gulp.src('assets/sass/main.scss')
     .pipe($.sass({errLogToConsole: true}))
-    .pipe($.if(!argv.production, $.sourcemaps.init()))
+    .pipe($.if(argv.dev, $.sourcemaps.init()))
     .pipe($.autoprefixer({
       browsers: ['last 2 versions', 'safari 5', 'ie 8', 'ie 9', 'ff 27', 'opera 12.1']
     }))
-    .pipe($.if(!argv.production, $.sourcemaps.write()))
-    .pipe($.if(argv.production, $.minifyCss()))
+    .pipe($.if(argv.dev, $.sourcemaps.write()))
+    .pipe($.if(!argv.dev, $.minifyCss()))
     .pipe(gulp.dest('build/css'));
 });
 
@@ -171,19 +171,22 @@ gulp.task('serve', ['styles', 'scripts', 'twig'], function () {
   gulp.watch(['assets/sass/**/*.scss'], function() {
     runSequence('styles', 'styleguide', reload);
   });
+  gulp.watch(['assets/sass/styleguide.scss'], function() {
+    runSequence('styleguide-styles', 'styleguide', reload);
+  });
   gulp.watch(['assets/img/**/*'], function() {
     runSequence('img', 'styleguide', reload);
   });
   gulp.watch(['assets/js/**/*.js'], function() {
     runSequence('scripts', reload);
   });
-  
+
   gulp.watch(['assets/pages/**/*'], function() {
     // clean folder before compiling
     del.bind(null, ['styleguide/pages'])
     runSequence('twig', reload);
   });
-  
+
 });
 
 /**
@@ -199,7 +202,6 @@ gulp.task('deploy', function () {
  * Task to build assets on production server
  */
 gulp.task('build',['clean'], function() {
-    argv.production = true;
     runSequence('vendors', 'styles', 'img', 'scripts');
 });
 
@@ -207,7 +209,6 @@ gulp.task('build',['clean'], function() {
  * Default task
  */
 gulp.task('default', ['clean'], function(cb) {
-  var styleguide_styles = argv.production ? '' : 'styleguide-styles';
-  runSequence('vendors', 'styles', 'img', 'scripts','twig', 'styleguide', styleguide_styles, cb);
+  runSequence('vendors', 'styles', 'img', 'scripts','twig', 'styleguide', 'styleguide-styles', cb);
 });
 
