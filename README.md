@@ -1,42 +1,37 @@
-# Antistatique Web-Styleguide
+# Antistatique Styleguide
 
 ![Antistatique](./assets/img/Antistatique_Logo_Couleur.png)
+### Install the styleguide
 
-
-### [Doc](http://antistatique.github.io/styleguide/index.html)
-
-
-## Edition
-
-```
+```bash
 $ npm install
 $ bower install
-```
-
-
-To compile assets once :
-
-```
 $ gulp
 ```
 
-To launch BrowserSync and Gulp Watch :
+### Build the styleguide with minification
 
+```bash
+$ gulp --production
 ```
+
+### Build only the minimum required for production
+
+```bash
+$ gulp build
+```
+
+### Watch and compile files as you go
+
+```bash
 $ gulp serve
 ```
 
-To deploy the styleguide on `gh-pages` :
+### Publish to GH Pages
 
-```
+```bash
 $ gulp deploy
 ```
 
 
-
-
-
-
-
-
-
+> This is a Yeoman generated styleguide for Antistatique.

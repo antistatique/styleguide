@@ -1,6 +1,10 @@
 node_modules
-bower_components
 *.DS_Store
+dist
+.tmp
 .sass-cache
+bower_components
+test/bower_components
+
 styleguide
 build

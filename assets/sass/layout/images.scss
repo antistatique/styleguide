@@ -45,38 +45,3 @@ category: Layout - Images
 <img src="http://lorempixel.com/150/150/cats" alt="Some cats image" class="img-thumbnail">
 ```
 */
-
-
-/*doc
----
-title: Full width image
-name: d-full-width-images
-category: Layout - Images
----
-
-
-```html_example
-<div class="full-width-image" style="background-image: url('http://lorempixel.com/1900/500/cats');">
-  <div class="container-fluid">
-    <div class="caption">
-      <h1>Cat 4 ever !</h1>
-    </div>
-  </div>
-</div>
-```
-*/
-
-.full-width-image {
-  width: 100%;
-  min-height: 400px;
-  background-color: $dust;
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  .caption {
-    display: inline-block;
-    background: $white;
-    padding: 0px 20px;
-    padding-bottom: 5px;
-    h1, h2, h3, h4, h5, h6, p {margin: 0;}
-  }
-}

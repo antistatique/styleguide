@@ -75,20 +75,44 @@ gulp.task('vendors', function() {
 });
 
 /**
+ * Copy images
+ */
+gulp.task('img', function() {
+  gulp.src([
+      'assets/img/**/*'
+    ])
+    .pipe(gulp.dest('build/img'));
+});
+
+/**
  * Build styles from SCSS files
  * With error reporting on compiling (so that there's no crash)
  */
 gulp.task('styles', function() {
-  if (argv.production) { console.log('Processing styles for production env.' ); }
-  return gulp.src('assets/sass/antistatique.scss')
-    .pipe($.rubySass())
-      .on('error', $.notify.onError(function (error) {
-         console.log(error.message);
-         if (!argv.production) {
-           return 'Message to the notifier: ' + error.message;
-         }
-      }))
-    .pipe($.autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'ff 27', 'opera 12.1'))
+  if (argv.production) { console.log('[styles] Processing styles for production env.' ); }
+  else { console.log('[styles] Processing styles for dev env. No minifying here, for sourcemaps!') }
+
+  return gulp.src('assets/sass/main.scss')
+    .pipe($.sass({errLogToConsole: true}))
+    .pipe($.if(!argv.production, $.sourcemaps.init()))
+    .pipe($.autoprefixer({
+      browsers: ['last 2 versions', 'safari 5', 'ie 8', 'ie 9', 'ff 27', 'opera 12.1']
+    }))
+    .pipe($.if(!argv.production, $.sourcemaps.write()))
+    .pipe($.if(argv.production, $.minifyCss()))
+    .pipe(gulp.dest('build/css'));
+});
+
+/**
+ * Build styles from SCSS files
+ * Only for STYLEGUIDE styles
+ */
+gulp.task('styleguide-styles', function() {
+  return gulp.src('assets/sass/styleguide.scss')
+    .pipe($.sass({errLogToConsole: true}))
+    .pipe($.autoprefixer({
+      browsers: ['last 2 versions', 'safari 5', 'ie 8', 'ie 9', 'ff 27', 'opera 12.1']
+    }))
     .pipe($.minifyCss())
     .pipe(gulp.dest('build/css'));
 });
@@ -117,6 +141,18 @@ gulp.task('styleguide', function () {
     .pipe($.hologram());
 });
 
+
+/**
+ * Compile TWIG example pages
+ */
+
+gulp.task('twig', function () {
+    return gulp.src('assets/pages/*.twig')
+        .pipe($.twig())
+        .pipe(gulp.dest('styleguide/pages'));
+});
+
+
 /**
  * Clean output directories
  */
@@ -125,20 +161,29 @@ gulp.task('clean', del.bind(null, ['build', 'styleguide']));
 /**
  * Serve
  */
-gulp.task('serve', ['styles', 'scripts'], function () {
+gulp.task('serve', ['styles', 'scripts', 'twig'], function () {
   browserSync({
     server: {
       baseDir: ['styleguide'],
     },
     open: false
   });
-  gulp.watch(['styleguide/*.html'], reload);
   gulp.watch(['assets/sass/**/*.scss'], function() {
     runSequence('styles', 'styleguide', reload);
+  });
+  gulp.watch(['assets/img/**/*'], function() {
+    runSequence('img', 'styleguide', reload);
   });
   gulp.watch(['assets/js/**/*.js'], function() {
     runSequence('scripts', reload);
   });
+  
+  gulp.watch(['assets/pages/**/*'], function() {
+    // clean folder before compiling
+    del.bind(null, ['styleguide/pages'])
+    runSequence('twig', reload);
+  });
+  
 });
 
 /**
@@ -153,15 +198,16 @@ gulp.task('deploy', function () {
 /**
  * Task to build assets on production server
  */
-gulp.task('production',['clean'], function() {
+gulp.task('build',['clean'], function() {
     argv.production = true;
-    runSequence('vendors', 'styles', 'scripts');
+    runSequence('vendors', 'styles', 'img', 'scripts');
 });
 
 /**
  * Default task
  */
 gulp.task('default', ['clean'], function(cb) {
-  runSequence('vendors', 'styles', 'scripts', 'styleguide', cb);
+  var styleguide_styles = argv.production ? '' : 'styleguide-styles';
+  runSequence('vendors', 'styles', 'img', 'scripts','twig', 'styleguide', styleguide_styles, cb);
 });
 
