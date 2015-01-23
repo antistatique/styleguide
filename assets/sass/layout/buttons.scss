@@ -23,6 +23,10 @@ category: Layout - Buttons
 | <button type="button" class="btn btn-link">Link</button>       | <pre>btn btn-link</pre>    |
 */
 
+.btn {
+  border: 0;
+  font-weight: 700;
+}
 
 /*doc
 ---

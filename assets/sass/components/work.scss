@@ -1,0 +1,73 @@
+@charset "UTF-8";
+/*doc
+---
+title: Work
+name: work
+category: Antistatique - Work
+---
+
+Write your comment here
+
+```html_example
+<div class="row">
+  <div class="col-sm-6">
+    <a href="#" class="work">
+      <img class="img-responsive" src="http://lorempixel.com/600/335/cats" alt="Some cats image">
+      <div class="caption">
+        <small class="text-uppercase">Branding • Symfony • Responsive</small>
+        <h3 class="text-white">Richter - Dahl Rocha & Associés</h3>
+      </div>
+    </a>
+  </div>
+</div>
+```
+
+*/
+
+.work {
+  position: relative;
+  border: 0;
+
+  &:before {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparentize($midnight-blue, 1), transparentize($midnight-blue, 0.4));
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    display: block;
+    transition: all 300ms;
+  }
+
+  &:hover {
+    &:after {
+      height: 4px;
+      background: $pinkstatik;
+    }
+  }
+
+  .caption {
+    position: absolute;
+    bottom: 0;
+    padding: 15px 30px;
+  }
+
+  h3 {
+    margin: 0;
+  }
+
+  small {
+    font-weight: 100;
+    color: transparentize($white, 0.2);
+  }
+}
